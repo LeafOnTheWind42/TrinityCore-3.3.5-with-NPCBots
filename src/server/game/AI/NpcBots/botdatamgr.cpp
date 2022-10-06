@@ -522,3 +522,28 @@ NpcBotRegistry const& BotDataMgr::GetExistingNPCBots()
 {
     return _existingBots;
 }
+
+// TransmogDisplayVendor/NPCBot compatibility start - function used in process of showing transmog on NPCBot
+// If a transmog has been applied to the passed-in item this returns the item_template.displayid for the transmog, otherwise the item_template.displayid for the passed-in item is returned
+uint32 GetNPCBotTransmogGuid(Item const* item)
+{
+    uint32 outputDisplayId = uint32(item->GetTemplate()->DisplayInfoID);
+    uint32 itemGuiId = uint32(item->GetGUID().GetCounter()); 
+    CharacterDatabasePreparedStatement* stmt = CharacterDatabase.GetPreparedStatement(CHAR_SEL_NPCBOT_TRANSMOG_BY_GUID);
+    //              0
+    // "SELECT it.displayid FROM characters.item_instance ii INNER JOIN characters.custom_transmogrification ct ON ii.guid = ct.GUID 
+    //      INNER JOIN world.item_template it ON ii.itemEntry = it.entry WHERE ct.GUID = ?"
+    
+    stmt->setUInt32(0, itemGuiId);
+    PreparedQueryResult queryResult = CharacterDatabase.Query(stmt);
+
+    if (queryResult)
+    {
+        Field* queryField = queryResult->Fetch();
+        outputDisplayId = queryField[0].GetUInt32();  // override initial value with transmog displayid value
+    }
+
+    return outputDisplayId;
+}
+// TransmogDisplayVendor/NPCBot compatibility end - function used in process of showing transmog on NPCBot
+

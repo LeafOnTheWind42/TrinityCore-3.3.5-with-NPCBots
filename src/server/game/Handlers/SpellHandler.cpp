@@ -722,7 +722,7 @@ void WorldSession::HandleMirrorImageDataRequest(WorldPacket& recvData)
 
                 Item const* item = bot->GetBotEquips(slot);
                 if (item)
-                    data << uint32(item->GetTemplate()->DisplayInfoID);
+                    data << GetNPCBotTransmogGuid(item); // TransmogDisplayVendor/NPCBot compatibility - show transmog on NPCBot
                 else
                 {
                     //don't allow to go naked

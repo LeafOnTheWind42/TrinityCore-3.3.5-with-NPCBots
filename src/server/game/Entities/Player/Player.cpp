@@ -21879,6 +21879,12 @@ bool Player::BuyItemFromVendorSlot(ObjectGuid vendorguid, uint32 vendorslot, uin
     }
     else
     // end npcbot
+    if (!(pProto->AllowableClass & GetClassMask()) && pProto->Bonding == BIND_WHEN_PICKED_UP && !IsGameMaster())
+    {
+        SendBuyError(BUY_ERR_CANT_FIND_ITEM, nullptr, item, 0);
+        return false;
+    }
+    
     Creature* creature = GetNPCIfCanInteractWith(vendorguid, UNIT_NPC_FLAG_VENDOR);
     if (!creature)
     {
@@ -21891,12 +21897,6 @@ bool Player::BuyItemFromVendorSlot(ObjectGuid vendorguid, uint32 vendorslot, uin
     if (creature->GetScriptName() == "NPC_TransmogDisplayVendor")
     {
         TransmogDisplayVendorMgr::HandleTransmogrify(this, creature, vendorslot, item);
-        return false;
-    }
-
-    if (!(pProto->AllowableClass & GetClassMask()) && pProto->Bonding == BIND_WHEN_PICKED_UP && !IsGameMaster())
-    {
-        SendBuyError(BUY_ERR_CANT_FIND_ITEM, nullptr, item, 0);
         return false;
     }
 
