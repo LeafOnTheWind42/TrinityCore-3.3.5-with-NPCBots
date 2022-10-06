@@ -1,10 +1,10 @@
-Summary: This goal of this fork of [TrinityCore-3.3.5-with-NPCBots](https://github.com/trickerer/TrinityCore-3.3.5-with-NPCBots) is to get transmogrified gear appearance to display on the NPCBots, utilizing a merge with the [TransmogDisplayVendor](https://github.com/Rochet2/TrinityCore/tree/transmogvendor_3.3.5/src/server/scripts/Custom/TransmogDisplayVendor) along with modifications to attempt to get it to it all to work together.
+Summary: This goal of this fork of [TrinityCore-3.3.5-with-NPCBots](https://github.com/trickerer/TrinityCore-3.3.5-with-NPCBots) is to get transmogrified gear appearances to display on the NPCBots, utilizing a merge with the [TransmogDisplayVendor](https://github.com/Rochet2/TrinityCore/tree/transmogvendor_3.3.5/src/server/scripts/Custom/TransmogDisplayVendor) along with modifications to attempt to get it all to work together.
 
 This Readme is in segments:
-TrinityCore (3.3.5) 
-Trinity-Bots
-TransmogDisplayVendor
-Fork Notes
+* TrinityCore (3.3.5) 
+* Trinity-Bots
+* TransmogDisplayVendor
+* Fork Notes
 
 ________________________________________________________________________________________________________________________________
 ________________________________________________________________________________________________________________________________
@@ -1009,7 +1009,7 @@ This fork has a function called GetNPCBotTransmogGuid defined in botdatamgr.cpp.
 
 To do items:
 1. Try to determine how to show weapon transmogs on the NPCBots.  I'm going to try to get SMSG_MIRRORIMAGE_DATA packet parses to see if that helps.
-2. Try to modify the TransmogDisplayVendor to be able to transmog items in a player's bag (currently it transmogs items equipped by the player).  This will allow, for example, a cloth-wearering player to transmog a plate item in their bags, which they can they have their plate-wearing NPCBot equip.
+2. Try to modify the TransmogDisplayVendor to be able to transmog items in a player's bag (currently it transmogs items equipped on the player).  This will allow, for example, a cloth-wearing player to transmog a plate item in their bags, which they can they have their plate-wearing NPCBot equip.
 
 - **Version 0.1** (_06 Oct 2022_)
     - Make transmogged armor appearance show up on NPCBots
