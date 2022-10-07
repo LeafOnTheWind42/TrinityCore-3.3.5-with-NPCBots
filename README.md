@@ -1011,7 +1011,7 @@ ________________________________________________________________________________
 
 The NPCBots code uses the WorldSession::HandleMirrorImageDataRequest function in /src/server/game/Handlers/SpellHandler.cpp to manage the display of the NPCBots.  
 
-This fork has a function called GetNPCBotTransmogGuid defined in botdatamgr.cpp.  If a transmog has been applied to an item that is passed in to that function, it will return the item_template.displayid for the transmog, otherwise the item_template.displayid for the passed-in item is returned.  This will cause items for slots defined in the HandleMirrorImageDataRequest function's botItemSlots array to display as the transmog item (if applicable) on the NPCBot.  That array doesn't contain weapons, so I haven't been able to get weapon transmogs to appear on the NPCBots yet.
+This fork has a function called GetNPCBotTransmogDisplayId defined in botdatamgr.cpp.  If a transmog has been applied to an item that is passed in to that function, it will return the item_template.displayid for the transmog, otherwise the item_template.displayid for the passed-in item is returned.  This will cause items for slots defined in the HandleMirrorImageDataRequest function's botItemSlots array to display as the transmog item (if applicable) on the NPCBot.  That array doesn't contain weapons, so I haven't been able to get weapon transmogs to appear on the NPCBots yet.
 
 To do items:
 1. Try to determine how to show weapon transmogs on the NPCBots.  I'm going to try to get SMSG_MIRRORIMAGE_DATA packet parses to see if that helps.
