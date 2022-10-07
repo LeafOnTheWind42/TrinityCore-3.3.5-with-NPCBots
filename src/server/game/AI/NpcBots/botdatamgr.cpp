@@ -525,7 +525,7 @@ NpcBotRegistry const& BotDataMgr::GetExistingNPCBots()
 
 // TransmogDisplayVendor/NPCBot compatibility start - function used in process of showing transmog on NPCBot
 // If a transmog has been applied to the passed-in item this returns the item_template.displayid for the transmog, otherwise the item_template.displayid for the passed-in item is returned
-uint32 GetNPCBotTransmogGuid(Item const* item)
+uint32 GetNPCBotTransmogDisplayId(Item const* item)
 {
     uint32 outputDisplayId = uint32(item->GetTemplate()->DisplayInfoID);
     uint32 itemGuiId = uint32(item->GetGUID().GetCounter()); 

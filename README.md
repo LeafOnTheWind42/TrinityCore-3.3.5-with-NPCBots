@@ -989,7 +989,13 @@ Video: https://youtu.be/PIheEziN_dY
 
 
 #### Installation
-Fork Note: removed installation instructions since this has already been merged into this fork.
+Fork Note Start: removed installation instructions since this has already been merged into this fork.  However you do need to make sure the /src/server/scripts/Custom/TransmogDisplayVendor/sql/world_NPC.sql and /src/server/scripts/Custom/TransmogDisplayVendor/sql/updates/characters_update_6_1_to_6_2.sql files get run once, whether by the worldserver running them when it starts on the first time it see the files, or running them some other other way (mariadb command line, some GUI database software like Beekeeper Studio, etc.).
+
+Adding a Transmog Vendor: When I first merged the TransmogrificationDisplayVendor code in, then logged into the world, I didn't know where to find a transmog vendor to talk to so I could get gear transmogged.  So I logged in as a GM character and put one where I wanted them by moving to that location, facing the direction I wanted the vendor to face, then running this GM command:
+
+.npc add 190011
+
+Fork Note End
 
 #### Usage
 Equip an item that is suitable for transmogrification.
